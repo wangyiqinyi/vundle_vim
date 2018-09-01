@@ -3,11 +3,11 @@ filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
 if has("win32") || has("win16")
-	set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
-	call vundle#begin('$HOME/vimfiles/bundle/')
+    set rtp+=$HOME/vimfiles/bundle/Vundle.vim/
+    call vundle#begin('$HOME/vimfiles/bundle/')
 else
-	set rtp+=~/.vim/bundle/Vundle.vim
-	call vundle#begin()
+    set rtp+=~/.vim/bundle/Vundle.vim
+    call vundle#begin()
 endif
 " alternatively, pass a path where Vundle should install plugins
 "call vundle#begin('~/some/path/here')
@@ -20,7 +20,6 @@ Plugin 'scrooloose/nerdtree'           " directory preview
 Plugin 'godlygeek/tabular'             " alignment by selected label
 Plugin 'Auto-Pairs'                    " auto pairs
 Plugin 'Vimjas/vim-python-pep8-indent' " python pep8 indent
-Plugin 'junegunn/seoul256.vim'         " color scheme
 Plugin 'vim-airline/vim-airline'       " status/tabline
 Plugin 'mhinz/vim-signify'             " show differences
 Plugin 'SirVer/ultisnips'              " snippets engine
@@ -30,6 +29,7 @@ Plugin 'w0rp/ale'                      " asynchronous lint engine
 Plugin 'Valloric/YouCompleteMe'        " code-completion engine
 Plugin 'jremmen/vim-ripgrep'           " use RipGrep in Vim
 Plugin 'yssl/QFEnter'                  " open items from location list
+Plugin 'tomasr/molokai'                " molokai colorscheme
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -85,9 +85,27 @@ set iskeyword+=_,$,@,%
 " fold setting
 set foldmethod=indent
 set nofoldenable
+set foldlevelstart=20
+set foldcolumn=1
+nnoremap <silent> <Space> @=(foldlevel('.')?za':"\<Space>")<CR>
+for i in [1, 2, 3, 4, 5, 6, 7, 8]
+    execute("nnoremap <silent> <A-" . i . "> foldlevel(" . i . ")<CR>")
+endfor
+
+" move lines
+nnoremap <A-j> :m .+1<CR>==
+nnoremap <A-k> :m .-2<CR>==
+inoremap <A-j> <Esc>:m .+1<CR>==gi
+inoremap <A-k> <Esc>:m .-2<CR>==gi
+vnoremap <A-j> :m '>+1<CR>gv=gv
+vnoremap <A-k> :m '<-2<CR>gv=gv
 
 " set tab visible.
 autocmd WinEnter,BufEnter,BufNewFile,BufRead * 2match TabLineFill /\t/
+
+" Tab
+map H :tabp <CR>
+map L :tabn <CR>
 
 " 0 same as “:set backspace=” (Vi compatible)
 " 1 same as “:set backspace=indent,eol”
@@ -127,7 +145,10 @@ nnoremap <leader>t :Tab/
 vnoremap <leader>t :Tab/
 
 " Unified color scheme
-colorscheme seoul256
+set t_Co=256
+let g:molokai_original=1
+let g:rehash256=1
+colorscheme molokai
 
 " LeaderF settings
 let g:Lf_DefaultMode='FullPath'
