@@ -57,7 +57,12 @@ syntax on
 
 " file encoding and decoding order
 set encoding=utf-8
-set fileencodings=utf-8,chinese,gbk,gb2312,cp936,cp950,gb18030,ucs-bom,utf-16,latin1
+if has("gui_running")
+    set fileencodings=utf-8,chinese,gbk,gb2312,cp936,cp950,gb18030,ucs-bom,utf-16,latin1
+else
+    set fileencodings=utf-8
+endif
+
 
 " indent
 set smartindent
@@ -97,21 +102,21 @@ nnoremap <silent> <C-1> foldlevel(1)<CR>
 set scrolloff=3
 
 " move lines
-if &term == "xterm"
-    nnoremap <Esc>j :m .+1<CR>==
-    nnoremap <Esc>k :m .-2<CR>==
-    inoremap <Esc>j <Esc>:m .+1<CR>==gi
-    inoremap <Esc>k <Esc>:m .-2<CR>==gi
-    vnoremap <Esc>j :m '>+1<CR>gv=gv
-    vnoremap <Esc>k :m '<-2<CR>gv=gv
-else
-    nnoremap <A-j> :m .+1<CR>==
-    nnoremap <A-k> :m .-2<CR>==
-    inoremap <A-j> <Esc>:m .+1<CR>==gi
-    inoremap <A-k> <Esc>:m .-2<CR>==gi
-    vnoremap <A-j> :m '>+1<CR>gv=gv
-    vnoremap <A-k> :m '<-2<CR>gv=gv
-endif
+" if &term == "xterm"
+"     nnoremap <Esc>j :m .+1<CR>==
+"     nnoremap <Esc>k :m .-2<CR>==
+"     inoremap <Esc>j <Esc>:m .+1<CR>==gi
+"     inoremap <Esc>k <Esc>:m .-2<CR>==gi
+"     vnoremap <Esc>j :m '>+1<CR>gv=gv
+"     vnoremap <Esc>k :m '<-2<CR>gv=gv
+" else
+"     nnoremap <A-j> :m .+1<CR>==
+"     nnoremap <A-k> :m .-2<CR>==
+"     inoremap <A-j> <Esc>:m .+1<CR>==gi
+"     inoremap <A-k> <Esc>:m .-2<CR>==gi
+"     vnoremap <A-j> :m '>+1<CR>gv=gv
+"     vnoremap <A-k> :m '<-2<CR>gv=gv
+" endif
 
 " set tab visible.
 autocmd WinEnter,BufEnter,BufNewFile,BufRead * 2match TabLineFill /\t/
