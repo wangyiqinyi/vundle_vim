@@ -127,8 +127,8 @@ map L :tabn <CR>
 map <leader>tn :tabnew<cr>
 map <leader>to :tabonly<cr>
 map <leader>tc :tabclose<cr>
-map <leader>tm :tabmove 
-map <leader>t<leader> :tabnext 
+map <leader>tm :tabmove
+map <leader>t<leader> :tabnext
 " Let 'tl' toggle between this and the last accessed tab
 let g:lasttab = 1
 nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
@@ -227,7 +227,7 @@ let g:ycm_filetype_blacklist = {
 \ 'nerdtree' : 1,
 \}
 set completeopt=menu,menuone
-nnoremap <c-]> :YcmCompleter GoToDefinitionElseDeclaration<CR>
+nnoremap <c-]> :YcmCompleter GoToDeclaration<CR>
 
 " UitlSnips settings
 let g:UltiSnipsExpandTrigger="<c-i>"
@@ -284,4 +284,3 @@ if has("win32") || has("win16")
        language messages en
        inoremap <C-S-V> <ESC>:setl paste<CR>gi<C-R>+<ESC>:setl nopaste<CR>gi
 endif
-
