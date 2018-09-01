@@ -30,6 +30,7 @@ Plugin 'Valloric/YouCompleteMe'        " code-completion engine
 Plugin 'jremmen/vim-ripgrep'           " use RipGrep in Vim
 Plugin 'yssl/QFEnter'                  " open items from location list
 Plugin 'tomasr/molokai'                " molokai colorscheme
+Plugin 'commentary.vim'                " add for comment
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
