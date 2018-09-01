@@ -87,10 +87,9 @@ set foldmethod=indent
 set nofoldenable
 set foldlevelstart=20
 set foldcolumn=1
-nnoremap <silent> <Space> @=(foldlevel('.')?za':"\<Space>")<CR>
-for i in [1, 2, 3, 4, 5, 6, 7, 8]
-    execute("nnoremap <silent> <A-" . i . "> foldlevel(" . i . ")<CR>")
-endfor
+nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
+vnoremap <Space> zf
+nnoremap <silent> <A-1> foldlevel(1)<CR>
 
 " move lines
 nnoremap <A-j> :m .+1<CR>==
