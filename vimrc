@@ -266,6 +266,7 @@ inoremap <return> <C-R>=Ulti_ExpandOrEnter()<CR>
 
 " vim-ripgrep settings
 nnoremap <leader>r :Rg ""<left>
+nnoremap <leader>rg :Rg<CR>
 let g:rg_highlight=1
 let g:rg_root_types=['.git', '.svn']
 
