@@ -182,6 +182,7 @@ colorscheme molokai
 
 " LeaderF settings
 let g:Lf_DefaultMode='FullPath'
+let g:Lf_WindowHeight=0.1
 let g:Lf_WorkingDirectoryMode='a'
 let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-H>']}
 let g:Lf_WildIgnore = {
