@@ -71,12 +71,6 @@ set softtabstop=4
 set shiftwidth=4
 set shiftround
 
-" Smart way to move between windows
-map <C-j> <C-W>j
-map <C-k> <C-W>k
-map <C-h> <C-W>h
-map <C-l> <C-W>l
-
 " show lineno
 set number
 
@@ -98,6 +92,9 @@ set foldcolumn=1
 nnoremap <silent> <Space> @=(foldlevel('.')?'za':"\<Space>")<CR>
 vnoremap <Space> zf
 nnoremap <silent> <C-1> foldlevel(1)<CR>
+
+" keep few lines visible above/below the cursor
+set scrolloff=3
 
 " move lines
 if &term == "xterm"
@@ -122,6 +119,23 @@ autocmd WinEnter,BufEnter,BufNewFile,BufRead * 2match TabLineFill /\t/
 " Tab
 map H :tabp <CR>
 map L :tabn <CR>
+map <leader>tn :tabnew<cr>
+map <leader>to :tabonly<cr>
+map <leader>tc :tabclose<cr>
+map <leader>tm :tabmove 
+map <leader>t<leader> :tabnext 
+" Let 'tl' toggle between this and the last accessed tab
+let g:lasttab = 1
+nmap <Leader>tl :exe "tabn ".g:lasttab<CR>
+au TabLeave * let g:lasttab = tabpagenr()
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+" Switch CWD to the directory of the open buffer
+map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " 0 same as “:set backspace=” (Vi compatible)
 " 1 same as “:set backspace=indent,eol”
