@@ -188,6 +188,8 @@ colorscheme molokai
 
 " LeaderF settings
 let g:Lf_DefaultMode='FullPath'
+let g:Lf_UseCache=0
+let g:Lf_UseVersionControlTool=0
 let g:Lf_WindowHeight=0.1
 let g:Lf_WorkingDirectoryMode='a'
 let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-H>']}
@@ -200,7 +202,7 @@ let g:Lf_WildIgnore = {
 let g:ale_linters = {
 \    'python': ['flake8'],
 \}
-let g:ale_python_flake8_options="--builtins network,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,get_sprite_frame_fail,GetSpriteFrameFromPlistAndPath,GetTextByLanguageI,message,leading_message,message_debug,confirm_show,tip_tick,ui_show,ui_set_visible,ui_get,ui_get_type_all,ui_hide_type,ui_close,uisystem,_,filter_text,filter_nickname,sm"
+let g:ale_python_flake8_options="--builtins cc,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,uisystem,_,filter_text,filter_nickname,sm,ui_manager"
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
@@ -286,3 +288,11 @@ if has("win32") || has("win16")
        language messages en
        inoremap <C-S-V> <ESC>:setl paste<CR>gi<C-R>+<ESC>:setl nopaste<CR>gi
 endif
+
+" auto restore session
+fu! _RestoreSession()
+    if filereadable("session.vim")
+        source session.vim
+    endif
+endfunction
+autocmd! VimEnter * call _RestoreSession()
