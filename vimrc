@@ -189,6 +189,7 @@ colorscheme molokai
 " LeaderF settings
 let g:Lf_DefaultMode='FullPath'
 let g:Lf_UseCache=0
+let g:lf_UseMemoryCache=0
 let g:Lf_UseVersionControlTool=0
 let g:Lf_WindowHeight=0.1
 let g:Lf_WorkingDirectoryMode='a'
