@@ -1,4 +1,5 @@
 set nocompatible              " be iMproved, required
+set noswapfile
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -60,9 +61,17 @@ syntax on
 set encoding=utf-8
 if has("gui_running")
     set fileencodings=utf-8,chinese,gbk,gb2312,cp936,cp950,gb18030,ucs-bom,utf-16,latin1
+    set fileencoding=chinese
 else
     set fileencodings=utf-8
 endif
+
+" context menu
+source $VIMRUNTIME/delmenu.vim
+source $VIMRUNTIME/menu.vim
+
+" fix console output
+language messages zh_CN.utf-8
 
 
 " indent
@@ -195,7 +204,7 @@ let g:Lf_WindowHeight=0.1
 let g:Lf_WorkingDirectoryMode='a'
 let g:Lf_CommandMap = {'<C-]>': ['<C-V>'], '<C-X>': ['<C-H>']}
 let g:Lf_WildIgnore = {
-\ 'dir': ['.svn','.git','.hg'],
+\ 'dir': ['.svn','.git','.hg', 'res'],
 \ 'file': ['*.sw?','~$*','*.bak','*.exe','*.o','*.so','*.py[co]']
 \}
 
