@@ -32,6 +32,7 @@ Plugin 'jremmen/vim-ripgrep'           " use RipGrep in Vim
 Plugin 'yssl/QFEnter'                  " open items from location list
 Plugin 'tomasr/molokai'                " molokai colorscheme
 Plugin 'commentary.vim'                " add for comment
+Plugin 'python-mode/python-mode'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
@@ -171,6 +172,16 @@ fu! _SetUtf8()
 endfunction
 autocmd filetype python nmap <leader>u :call _SetUtf8()<CR>
 
+" pymode
+let g:pymode_options = 0
+let g:pymode_indent = 0
+let g:pymode_folding = 1
+let g:pymode_lint = 0
+let g:pymode_run = 0
+let g:pymode_syntax = 1
+let g:pymode_syntax_all = 1
+let g:pymode_syntax_slow_sync = 1
+
 " NERD tree
 " Disable directory arrows so nerdtree works on (almost) every terminal.
 let g:NERDTreeDirArrows=0
@@ -212,7 +223,7 @@ let g:Lf_WildIgnore = {
 let g:ale_linters = {
 \    'python': ['flake8'],
 \}
-let g:ale_python_flake8_options="--builtins cc,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,uisystem,_,filter_text,filter_nickname,sm,ui_manager"
+let g:ale_python_flake8_options="--builtins cc,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,uisystem,_,filter_text,filter_nickname,sm,ui_manager,cfg"
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
@@ -229,6 +240,8 @@ let g:ycm_add_preview_to_completeopt = 0
 let g:ycm_show_diagnostics_ui = 0
 let g:ycm_server_log_level = 'info'
 let g:ycm_min_num_identifier_candidate_chars = 2
+let g:ycm_min_num_of_chars_for_completion = 99
+let g:ycm_max_num_candidates = 10
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_complete_in_strings = 1
 let g:ycm_complete_in_comments = 1
@@ -238,6 +251,9 @@ let g:ycm_semantic_triggers =  {
 let g:ycm_filetype_blacklist = {
 \ 'tagbar' : 1,
 \ 'nerdtree' : 1,
+\ 'txt': 1,
+\ 'msgpack': 1,
+\ 'log': 1,
 \}
 set completeopt=menu,menuone
 nnoremap <c-]> :YcmCompleter GoToDeclaration<CR>
