@@ -223,7 +223,7 @@ let g:Lf_WildIgnore = {
 let g:ale_linters = {
 \    'python': ['flake8'],
 \}
-let g:ale_python_flake8_options="--builtins cc,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,uisystem,_,filter_text,filter_nickname,sm,ui_manager,cfg"
+let g:ale_python_flake8_options="--builtins cc,ccp,CCSize,CCRect,ccc3,ccc4,ccc4f,ccc3FromHex,ccc4FromHex,ccc4aFromHex,ccc4fFromHex,uisystem,_t,filter_text,filter_nickname,sm,ui_manager,cfg,is_robot,stats_manager"
 let g:ale_fixers = {
 \   '*': ['remove_trailing_lines', 'trim_whitespace'],
 \   'javascript': ['eslint'],
@@ -322,3 +322,6 @@ fu! _RestoreSession()
     endif
 endfunction
 autocmd! VimEnter * call _RestoreSession()
+
+set vb t_vb=
+au GuiEnter * set t_vb=
